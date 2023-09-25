@@ -19,19 +19,23 @@ export const exportToHtml = (editorState: EditorState) => {
             },
         },
         blockStyleFn: (block) => {
-            return {
-                element: 'blockquote',
-                style: {
-                    backgroundColor: '#f9f9f9',
-                    borderLeft: '10px solid #ccc',
-                    margin: '1.5em 10px',
-                    padding: '0.5em 10px',
-                    quotes: "\x81\x201D\x2018\x2019",
+            if (block.getType() === 'blockquote') {
+                return {
+                    element: 'blockquote',
+                    style: {
+                        backgroundColor: '#f9f9f9',
+                        borderLeft: '10px solid #ccc',
+                        margin: '1.5em 10px',
+                        padding: '0.5em 10px',
+                        quotes: "\x81\x201D\x2018\x2019",
+                    }
                 }
             }
+            return undefined;
         },
         entityStyleFn: (entity) => {
             const data = entity.getData();
+            console.log(entity);
             return {
                 element: 'a',
                 attributes: {
