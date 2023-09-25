@@ -35,14 +35,15 @@ export const exportToHtml = (editorState: EditorState) => {
         },
         entityStyleFn: (entity) => {
             const data = entity.getData();
-            console.log(entity);
-            return {
-                element: 'a',
-                attributes: {
-                    href: data.url,
-                    target: '_blank',
-                    rel: 'noopener noreferrer',
-                },
+            if (entity.getType() === 'LINK') {
+                return {
+                    element: 'a',
+                    attributes: {
+                        href: data.url,
+                        target: '_blank',
+                        rel: 'noopener noreferrer',
+                    },
+                }
             }
         },
     });
