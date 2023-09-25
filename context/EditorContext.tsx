@@ -1,4 +1,5 @@
-import createEditorStateWithText from "@draft-js-plugins/editor/lib/utils/createEditorStateWithText";
+'use client'
+import { createEditorStateWithText } from "@draft-js-plugins/editor";
 import { EditorState } from "draft-js";
 import { createContext, useContext, useState } from "react";
 import { IBox } from "@/types/base";
